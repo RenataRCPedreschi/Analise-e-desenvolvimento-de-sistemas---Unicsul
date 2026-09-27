@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Projetos e formas de ajudar | Patas que Acolhem</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<script src="../js/navigation.js" defer></script>
+	<script src="../js/feedback.js" defer></script>
+	<script src="../js/cadastro.js" defer></script>
+	<script src="../js/templates.js" defer></script>
+	<script src="../js/interesses.js" defer></script>
+	<script src="../js/spa.js" defer></script>
+</head>
+<body>
+	<header>
+		<nav class="site-navigation" aria-label="Navegação principal">
+			<a class="site-brand" href="index.html">Patas que Acolhem</a>
+			<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+				<span class="menu-icon" aria-hidden="true"></span>
+			</button>
+			<ul class="primary-menu" id="menu-principal">
+				<li><a href="index.html">Início</a></li>
+				<li class="has-dropdown">
+					<a href="projetos.html" aria-current="page">Projetos</a>
+					<details class="nav-dropdown">
+						<summary aria-label="Alternar submenu de Projetos"></summary>
+						<ul class="dropdown-menu" id="submenu-projetos">
+							<li><a href="#doacoes">Doações</a></li>
+							<li><a href="#voluntariado">Voluntariado</a></li>
+						</ul>
+					</details>
+				</li>
+				<li><a href="cadastro.html">Cadastro</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="toast-region" id="toast-region" aria-live="polite" aria-relevant="additions text"></div>
+
+	<main class="page-grid projects-page">
+		<header class="projects-intro">
+			<h1>Faça parte dessa causa</h1>
+			<p>Doações e trabalho voluntário ajudam a manter o cuidado e o acolhimento de cães e gatos.</p>
+			<nav aria-label="Frentes de atuação">
+				<a href="#doacoes">Conheça as formas de doar</a>
+				<a href="#voluntariado">Saiba como ser voluntário</a>
+			</nav>
+		</header>
+
+		<section class="projects-donations" id="doacoes" aria-labelledby="titulo-doacoes">
+			<h2 id="titulo-doacoes">Doações</h2>
+			<p class="badge-list"><span class="badge badge--donation">Doação</span><span class="badge badge--donation">Campanhas</span></p>
+			<p class="interest-action"><button type="button" data-interest-toggle data-interest="doacoes" aria-pressed="false">Tenho interesse</button></p>
+			<p>As contribuições apoiam as necessidades dos animais acolhidos e as ações da organização.</p>
+
+			<section aria-labelledby="titulo-itens">
+				<h3 id="titulo-itens">O que pode ser doado</h3>
+				<ul id="lista-doacoes" data-template-list="doacoes" aria-label="Itens aceitos para doação"></ul>
+				<aside class="alert alert--warning" role="note">
+					<p><strong>Combine a entrega:</strong> confirme com a equipe quais itens são prioritários e as condições de recebimento.</p>
+				</aside>
+			</section>
+
+			<section aria-labelledby="titulo-campanhas">
+				<h3 id="titulo-campanhas">Campanhas de arrecadação</h3>
+				<p>As campanhas podem reunir alimentos, materiais de cuidado ou recursos para atender necessidades da ONG. Para saber quais itens são prioritários e combinar a entrega, fale com a equipe.</p>
+				<p><a href="mailto:contato@patasqueacolhem.org?subject=Doa%C3%A7%C3%A3o%20para%20a%20Patas%20que%20Acolhem">Consultar como contribuir</a></p>
+				<p><button class="dialog-trigger" type="button" data-dialog-open="dialog-doacoes">Como funciona a contribuição</button></p>
+			</section>
+		</section>
+
+		<section class="projects-volunteering" id="voluntariado" aria-labelledby="titulo-voluntariado">
+			<h2 id="titulo-voluntariado">Voluntariado</h2>
+			<p class="badge-list"><span class="badge badge--volunteer">Voluntariado</span><span class="badge badge--volunteer">Ação comunitária</span></p>
+			<p class="interest-action"><button type="button" data-interest-toggle data-interest="voluntariado" aria-pressed="false">Tenho interesse</button></p>
+			<p>Há diferentes maneiras de colaborar, de acordo com as necessidades da organização e a disponibilidade de cada pessoa.</p>
+
+			<section aria-labelledby="titulo-atividades">
+				<h3 id="titulo-atividades">Como você pode ajudar</h3>
+				<ul id="lista-atividades" data-template-list="atividades" aria-label="Atividades voluntárias"></ul>
+			</section>
+
+			<section aria-labelledby="titulo-participar">
+				<h3 id="titulo-participar">Como participar</h3>
+				<ol>
+					<li>Entre em contato e conte quais atividades gostaria de realizar;</li>
+					<li>Informe sua disponibilidade e experiência, se houver;</li>
+					<li>Combine com a equipe as orientações e os próximos passos.</li>
+				</ol>
+				<p><a href="mailto:contato@patasqueacolhem.org?subject=Interesse%20em%20voluntariado">Tenho interesse em ser voluntário</a></p>
+			</section>
+		</section>
+
+		<aside class="projects-contact" aria-labelledby="titulo-contato">
+			<h2 id="titulo-contato">Fale com a equipe</h2>
+			<p>Para tirar dúvidas sobre doações, campanhas ou voluntariado:</p>
+			<address>
+				<a href="mailto:contato@patasqueacolhem.org">contato@patasqueacolhem.org</a><br>
+				<a href="tel:+5511987879999">(11) 98787-9999</a>
+			</address>
+		</aside>
+
+		<template id="template-item-lista">
+			<li><span data-template-text></span></li>
+		</template>
+	</main>
+
+	<dialog class="info-dialog" id="dialog-doacoes" aria-labelledby="titulo-dialog-doacoes" aria-describedby="texto-dialog-doacoes" data-spa-extra>
+		<div class="dialog-content">
+			<button class="dialog-close" type="button" data-dialog-close aria-label="Fechar orientações">Fechar</button>
+			<h2 id="titulo-dialog-doacoes">Como contribuir</h2>
+			<p id="texto-dialog-doacoes">As necessidades podem mudar conforme os animais acolhidos e as campanhas em andamento. Antes de separar ou entregar itens, consulte a equipe para confirmar prioridades e combinar a entrega.</p>
+			<p>Para conversar com a organização, escreva para <a href="mailto:contato@patasqueacolhem.org">contato@patasqueacolhem.org</a>.</p>
+		</div>
+	</dialog>
+
+	<footer>
+		<p>&copy; 2026 Patas que Acolhem. Todos os direitos reservados.</p>
+	</footer>
+</body>
+</html>

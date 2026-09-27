@@ -5,152 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Cadastre-se para entrar em contato com a organização Patas que Acolhem.">
   <title>Cadastro | Patas que Acolhem</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: Arial, sans-serif;
-      color: #252525;
-      background: #f5f7f4;
-    }
-
-    body {
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    header,
-    main,
-    footer {
-      width: min(100% - 2rem, 58rem);
-      margin-inline: auto;
-    }
-
-    header {
-      padding-block: 1rem;
-    }
-
-    nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 0;
-      list-style: none;
-    }
-
-    a {
-      color: #245c3c;
-    }
-
-    main {
-      padding-block: 1rem 3rem;
-    }
-
-    form {
-      display: grid;
-      gap: 1.5rem;
-      max-width: 48rem;
-    }
-
-    fieldset {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-      gap: 1rem;
-      padding: 1.25rem;
-      border: 1px solid #aab6aa;
-      border-radius: 0.5rem;
-      background: #fff;
-    }
-
-    legend {
-      padding-inline: 0.4rem;
-      font-weight: 700;
-    }
-
-    .field {
-      display: grid;
-      align-content: start;
-      gap: 0.35rem;
-    }
-
-    .field-wide {
-      grid-column: 1 / -1;
-    }
-
-    input,
-    select,
-    button {
-      box-sizing: border-box;
-      min-height: 2.75rem;
-      padding: 0.55rem 0.7rem;
-      border: 1px solid #737d73;
-      border-radius: 0.25rem;
-      font: inherit;
-    }
-
-    input:focus,
-    select:focus,
-    button:focus-visible,
-    a:focus-visible {
-      outline: 3px solid #34744d;
-      outline-offset: 2px;
-    }
-
-    .hint {
-      margin: 0;
-      color: #505850;
-      font-size: 0.9rem;
-    }
-
-    .consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
-
-    .consent input {
-      min-height: auto;
-      margin-top: 0.35rem;
-    }
-
-    button {
-      width: fit-content;
-      padding-inline: 1.25rem;
-      border: 0;
-      background: #245c3c;
-      color: #fff;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    #resultado-cadastro {
-      min-height: 1.5em;
-      font-weight: 700;
-    }
-
-    footer {
-      padding-block: 1rem;
-      border-top: 1px solid #d2d8d1;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/feedback.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer></script>
+  <script src="../js/cadastro.js" defer></script>
+  <script src="../js/templates.js" defer></script>
+  <script src="../js/interesses.js" defer></script>
+  <script src="../js/spa.js" defer></script>
 </head>
 <body>
   <header>
-    <nav aria-label="Navegação principal">
-      <a href="index.html">Patas que Acolhem</a>
-      <ul>
+    <nav class="site-navigation" aria-label="Navegação principal">
+      <a class="site-brand" href="index.html">Patas que Acolhem</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+      <ul class="primary-menu" id="menu-principal">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos e formas de ajudar</a></li>
+        <li class="has-dropdown">
+          <a href="projetos.html">Projetos</a>
+          <details class="nav-dropdown">
+            <summary aria-label="Alternar submenu de Projetos"></summary>
+            <ul class="dropdown-menu" id="submenu-projetos">
+              <li><a href="projetos.html#doacoes">Doações</a></li>
+              <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="page-grid registration-page">
     <h1>Faça seu cadastro</h1>
     <p>Preencha seus dados para que a equipe da Patas que Acolhem possa entrar em contato.</p>
-    <p id="aviso-cadastro">Esta página é demonstrativa: os dados são validados no navegador, mas não são enviados nem armazenados.</p>
+    <p class="alert alert--info" id="aviso-cadastro" role="note">Esta página é demonstrativa: os dados são validados no navegador, mas não são enviados nem armazenados.</p>
     <noscript><p>Ative o JavaScript para validar o formulário. Nenhum dado será enviado.</p></noscript>
 
-    <form id="form-cadastro" method="post" aria-describedby="aviso-cadastro">
+    <form class="registration-form" id="form-cadastro" method="post" aria-describedby="aviso-cadastro">
       <fieldset>
         <legend>Dados pessoais e contato</legend>
 
@@ -177,7 +71,7 @@
 
         <div class="field">
           <label for="telefone">Telefone com DDD</label>
-          <input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="15" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" aria-describedby="dica-telefone" required>
+          <input id="telefone" name="telefone" type="text" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="15" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" aria-describedby="dica-telefone" required>
           <p class="hint" id="dica-telefone">Informe o DDD e um telefone fixo ou celular brasileiro.</p>
         </div>
       </fieldset>
@@ -262,94 +156,11 @@
     </form>
   </main>
 
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-relevant="additions text"></div>
+
   <footer>
     <p>&copy; 2026 Patas que Acolhem. Todos os direitos reservados.</p>
   </footer>
 
-  <script>
-    const cpfInput = document.querySelector("#cpf");
-    const telefoneInput = document.querySelector("#telefone");
-    const cepInput = document.querySelector("#cep");
-    const formCadastro = document.querySelector("#form-cadastro");
-    const resultadoCadastro = document.querySelector("#resultado-cadastro");
-
-    function somenteDigitos(valor) {
-      return valor.replace(/\D/g, "");
-    }
-
-    function formatarCpf(valor) {
-      return valor
-        .replace(/^(\d{3})(\d)/, "$1.$2")
-        .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
-        .replace(/\.(\d{3})(\d)/, ".$1-$2");
-    }
-
-    function formatarTelefone(valor) {
-      const digitos = valor.slice(0, 11);
-      if (digitos.length <= 2) {
-        return digitos ? `(${digitos}` : "";
-      }
-      if (digitos.length <= 6) {
-        return `(${digitos.slice(0, 2)}) ${digitos.slice(2)}`;
-      }
-      const tamanhoPrefixo = digitos.length > 10 ? 5 : 4;
-      return `(${digitos.slice(0, 2)}) ${digitos.slice(2, 2 + tamanhoPrefixo)}-${digitos.slice(2 + tamanhoPrefixo)}`;
-    }
-
-    function formatarCep(valor) {
-      const digitos = valor.slice(0, 8);
-      return digitos.length > 5 ? `${digitos.slice(0, 5)}-${digitos.slice(5)}` : digitos;
-    }
-
-    function cpfValido(valor) {
-      const digitos = somenteDigitos(valor);
-      if (digitos.length !== 11 || /^(\d)\1{10}$/.test(digitos)) {
-        return false;
-      }
-
-      function calcularDigito(tamanho) {
-        let soma = 0;
-        for (let indice = 0; indice < tamanho; indice += 1) {
-          soma += Number(digitos[indice]) * (tamanho + 1 - indice);
-        }
-        const resto = (soma * 10) % 11;
-        return resto === 10 ? 0 : resto;
-      }
-
-      return calcularDigito(9) === Number(digitos[9])
-        && calcularDigito(10) === Number(digitos[10]);
-    }
-
-    function atualizarCpf() {
-      cpfInput.value = formatarCpf(somenteDigitos(cpfInput.value).slice(0, 11));
-      cpfInput.setCustomValidity(
-        cpfInput.value.length === 14 && !cpfValido(cpfInput.value)
-          ? "Informe um CPF válido, incluindo os dígitos verificadores."
-          : ""
-      );
-    }
-
-    cpfInput.addEventListener("input", atualizarCpf);
-    telefoneInput.addEventListener("input", () => {
-      telefoneInput.value = formatarTelefone(somenteDigitos(telefoneInput.value));
-    });
-    cepInput.addEventListener("input", () => {
-      cepInput.value = formatarCep(somenteDigitos(cepInput.value));
-    });
-
-    formCadastro.addEventListener("submit", (evento) => {
-      evento.preventDefault();
-      atualizarCpf();
-      resultadoCadastro.textContent = "";
-
-      if (!formCadastro.reportValidity()) {
-        return;
-      }
-
-      resultadoCadastro.textContent = "Cadastro validado no navegador. Nenhum dado foi enviado ou armazenado.";
-    });
-
-    formCadastro.querySelector('button[type="submit"]').disabled = false;
-  </script>
 </body>
 </html>

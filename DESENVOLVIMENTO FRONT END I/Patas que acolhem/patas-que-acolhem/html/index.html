@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patas que Acolhem</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/feedback.js" defer></script>
+  <script src="../js/cadastro.js" defer></script>
+  <script src="../js/templates.js" defer></script>
+  <script src="../js/interesses.js" defer></script>
+  <script src="../js/spa.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <nav class="site-navigation" aria-label="Navegação principal">
+      <a class="site-brand" href="index.html">Patas que Acolhem</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+      <ul class="primary-menu" id="menu-principal">
+        <li><a href="index.html" aria-current="page">Início</a></li>
+        <li class="has-dropdown">
+          <a href="projetos.html">Projetos</a>
+          <details class="nav-dropdown">
+            <summary aria-label="Alternar submenu de Projetos"></summary>
+            <ul class="dropdown-menu" id="submenu-projetos">
+              <li><a href="projetos.html#doacoes">Doações</a></li>
+              <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-relevant="additions text"></div>
+
+  <main class="page-grid home-page">
+
+    <section class="home-hero">
+      <h1>Patas que Acolhem</h1>
+
+      <p>Um lar pode mudar uma vida.</p>
+
+      <p>
+        A Patas que Acolhem atua no resgate e cuidado de cães e gatos em situação de abandono,
+        buscando oferecer proteção, tratamento e novas oportunidades por meio da adoção responsável.
+      </p>
+
+      <figure>
+        <picture>
+          <source srcset="../imagens/caes-e-gatos.webp" type="image/webp">
+          <source srcset="../imagens/caes-e-gatos.png" type="image/png">
+          <img
+            src="../imagens/caes-e-gatos.jpg"
+            alt="Cães e gatos acolhidos pela equipe da Patas que Acolhem">
+        </picture>
+
+        <figcaption>
+          Cuidar também é transformar vidas.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="home-about">
+      <h2>Quem somos</h2>
+
+      <p>
+        Somos uma organização dedicada à proteção animal, oferecendo acolhimento e cuidados aos
+        animais que precisam de ajuda. Nosso objetivo é promover o bem-estar animal e incentivar a
+        adoção responsável.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <h2>Entre em contato</h2>
+    <p>E-mail: contato@patasqueacolhem.org</p>
+    <p>Telefone: (11) 98787-9999</p>
+    <p>&copy; 2026 Patas que Acolhem. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
+
